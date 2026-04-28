@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,600;1,400;1,600&family=Didact+Gothic&family=Raleway:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
+/* ============================================
+   DESIGN TOKENS
+   ============================================ */
+:root {
+  --bg:          #100508;
+  --bg-2:        #180b10;
+  --gold:        #C9A46A;
+  --gold-light:  #DDB87A;
+  --gold-glow:   rgba(201, 164, 106, 0.12);
+  --gold-glow-strong: rgba(201, 164, 106, 0.25);
+  --text:        #FFF2F8;
+  --text-muted:  rgba(255, 242, 248, 0.55);
+  --rose-dark:   #6B2D4A;
+  --rose-light:  #E8B4C8;
+  --card-bg:     rgba(107, 45, 74, 0.18);
+  --glass:       rgba(255, 242, 248, 0.04);
+  --glass-border:rgba(201, 164, 106, 0.2);
+  --border:      rgba(201, 164, 106, 0.15);
+  --shadow-gold: 0 0 40px rgba(201, 164, 106, 0.15);
+  --radius:      12px;
+  --radius-lg:   20px;
+  --scroll:      0;
+}
+
+/* ============================================
+   RESET & BASE
+   ============================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+h1, h2, h3 {
+  font-family: 'Bodoni Moda', serif;
+  font-style: italic;
+  line-height: 1.15;
+}
+
+h4, h5, .subheading {
+  font-family: 'Didact Gothic', sans-serif;
+  font-style: normal;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: var(--gold);
+}
+
+.price-text {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+
+/* ============================================
+   SELECTION
+   ============================================ */
+::selection {
+  background: var(--gold);
+  color: var(--bg);
+}
+
+/* ============================================
+   SCROLL PROGRESS BAR
+   ============================================ */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: calc(var(--scroll) * 100%);
+  background: linear-gradient(90deg, var(--gold), var(--rose-light));
+  z-index: 9999;
+  transition: width 0.05s linear;
+  box-shadow: 0 0 10px var(--gold);
+}
+
+/* ============================================
+   GOLD GRADIENT TEXT
+   ============================================ */
+.gold-text {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 40%, #F5D89A 60%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ============================================
+   GLASS CARD
+   ============================================ */
+.glass-card {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-lg);
+}
+
+/* ============================================
+   GOLD BUTTON
+   ============================================ */
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 36px;
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  border-radius: 2px;
+  font-family: 'Didact Gothic', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.35s ease, color 0.35s ease, box-shadow 0.35s ease;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gold:hover {
+  background: var(--gold);
+  color: var(--bg);
+  box-shadow: 0 0 30px var(--gold-glow-strong);
+}
+
+/* ============================================
+   SECTION SPACING
+   ============================================ */
+.section {
+  padding: 100px 0;
+  position: relative;
+}
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ============================================
+   SECTION HEADER
+   ============================================ */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.section-label::before,
+.section-label::after {
+  content: '';
+  display: block;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.4;
+}
+
+.section-label::before { width: 32px; }
+.section-label::after { flex: 1; max-width: 60px; }
+
+/* ============================================
+   DIVIDER
+   ============================================ */
+.divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 24px auto;
+}
+
+/* ============================================
+   UTILITY
+   ============================================ */
+.text-center { text-align: center; }
+.mt-2 { margin-top: 8px; }
+.mt-4 { margin-top: 16px; }
+.mt-6 { margin-top: 24px; }
+.mt-8 { margin-top: 32px; }
+
+/* ============================================
+   MASONRY GRID
+   ============================================ */
+.masonry-grid {
+  display: flex;
+  gap: 12px;
+  width: auto;
+}
+.masonry-grid-col {
+  background-clip: padding-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .section { padding: 64px 0; }
+  h1 { font-size: clamp(2.5rem, 10vw, 5rem); }
+  h2 { font-size: clamp(2rem, 8vw, 3.5rem); }
+}
